@@ -118,9 +118,9 @@ define sensu::check(
 
   file { "${::sensu::conf_dir}/checks/${check_name}.json":
     ensure => $ensure,
-    owner  => 'sensu',
-    group  => 'sensu',
-    mode   => '0440',
+    owner  => $::sensu::user,
+    group  => $::sensu::group,
+    mode   => $::sensu::file_mode,
     before => Sensu_check[$check_name],
   }
 
