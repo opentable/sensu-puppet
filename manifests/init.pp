@@ -344,6 +344,7 @@ class sensu (
   case $::osfamily {
     'Debian','RedHat': {
       $etc_dir = '/etc/sensu'
+      $conf_dir = "${etc_dir}/conf.d"
       $user = 'sensu'
       $group = 'sensu'
       $dir_mode = '0555'
@@ -352,6 +353,7 @@ class sensu (
 
     'windows': {
       $etc_dir = 'C:/opt/sensu'
+      $conf_dir = "${etc_dir}/conf.d"
       $user = undef
       $group = undef
       $dir_mode = undef

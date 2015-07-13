@@ -116,7 +116,7 @@ define sensu::check(
 
   $check_name = regsubst(regsubst($name, ' ', '_', 'G'), '[\(\)]', '', 'G')
 
-  file { "/etc/sensu/conf.d/checks/${check_name}.json":
+  file { "${::sensu::conf_dir}/checks/${check_name}.json":
     ensure => $ensure,
     owner  => 'sensu',
     group  => 'sensu',
@@ -143,7 +143,7 @@ define sensu::check(
     publish             => $publish,
     dependencies        => $dependencies,
     custom              => $custom,
-    require             => File['/etc/sensu/conf.d/checks'],
+    require             => File["${::sensu::conf_dir}/checks"],
     notify              => $::sensu::check_notify,
   }
 

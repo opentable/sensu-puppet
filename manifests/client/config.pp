@@ -14,7 +14,7 @@ class sensu::client::config {
     $ensure = 'present'
   }
 
-  file { "${sensu::etc_dir}/conf.d/client.json":
+  file { "${sensu::conf_dir}/client.json":
     ensure => $ensure,
     owner  => $sensu::user,
     group  => $sensu::group,
@@ -23,7 +23,7 @@ class sensu::client::config {
 
   sensu_client_config { $::fqdn:
     ensure        => $ensure,
-    base_path     => "${sensu::etc_dir}/conf.d",
+    base_path     => $sensu::conf_dir,
     client_name   => $sensu::client_name,
     address       => $sensu::client_address,
     bind          => $sensu::client_bind,

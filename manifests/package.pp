@@ -58,8 +58,6 @@ class sensu::package {
 
   }
 
-  $conf_dir = "${sensu::etc_dir}/conf.d"
-  
   package { $package_name:
     ensure   => $sensu::version,
     source   => $package_source,
@@ -99,7 +97,7 @@ class sensu::package {
     }
   }
 
-  file { [ $conf_dir, "${conf_dir}/handlers", "${conf_dir}/checks", "${conf_dir}/filters", "${conf_dir}/extensions" ]:
+  file { [ $sensu::conf_dir, "${sensu::conf_dir}/handlers", "${sensu::conf_dir}/checks", "${sensu::conf_dir}/filters", "${sensu::conf_dir}/extensions" ]:
     ensure  => directory,
     owner   => $sensu::user,
     group   => $sensu::group,
