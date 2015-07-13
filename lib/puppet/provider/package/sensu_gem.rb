@@ -11,7 +11,13 @@ Puppet::Type.type(:package).provide :sensu_gem, :parent => :gem do
 
   has_feature :versionable, :install_options
 
-  commands :gemcmd => "/opt/sensu/embedded/bin/gem"
+  commands :gemcmd => 
+    case :osfamily
+    when :windows
+      "C:/opt/sensu/embedded/bin/gem"
+    else
+      "/opt/sensu/embedded/bin/gem"
+    end
 
   def uninstall
     command = [command(:gemcmd), "uninstall"]
