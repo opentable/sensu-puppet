@@ -12,8 +12,7 @@ Puppet::Type.type(:package).provide :sensu_gem, :parent => :gem do
   has_feature :versionable, :install_options
 
   commands :gemcmd => 
-    case :osfamily
-    when :windows
+    if File.exists?("C:/opt/sensu/embedded/bin/gem")
       "C:/opt/sensu/embedded/bin/gem"
     else
       "/opt/sensu/embedded/bin/gem"
