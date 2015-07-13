@@ -126,7 +126,7 @@ define sensu::check(
 
   sensu_check { $check_name:
     ensure              => $ensure,
-    base_path           => $::sensu::conf_dir,
+    base_path           => "${::sensu::conf_dir}/checks",
     type                => $type,
     standalone          => $standalone,
     command             => $command,
