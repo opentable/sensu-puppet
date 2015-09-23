@@ -287,6 +287,7 @@ class sensu (
   $init_stop_max_wait          = 10,
   $gem_install_options         = undef,
   $hasrestart                  = true,
+  $path                        = undef,
 
   ### START Hiera Lookups ###
   $extensions                  = {},
