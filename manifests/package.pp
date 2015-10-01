@@ -14,7 +14,7 @@ class sensu::package {
       $package_name = 'sensu'
       $package_source = undef
       $package_require = undef
-      
+
       class { 'sensu::repo::apt': }
       if $sensu::install_repo {
         include apt
@@ -28,7 +28,7 @@ class sensu::package {
       $package_name = 'sensu'
       $package_source = undef
       $package_require = undef
- 
+
       class { 'sensu::repo::yum': }
       if $sensu::install_repo {
         $repo_require = Yumrepo['sensu']
@@ -41,7 +41,7 @@ class sensu::package {
       $repo_require = undef
 
       $package_version = inline_template("<%= scope.lookupvar('sensu::version').sub(/(.*)\./, '\1-') %>")
-      $package_name = 'Sensu'
+      $package_name = 'sensu'
       $package_source = "C:\\Windows\\Temp\\sensu-${package_version}.msi"
       $package_require = "Archive[${package_source}]"
 
