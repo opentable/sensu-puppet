@@ -11,6 +11,7 @@ class sensu::package {
   case $::osfamily {
 
     'Debian': {
+      $package_title = 'sensu'
       $package_name = 'sensu'
       $package_source = undef
       $package_require = undef
@@ -25,6 +26,7 @@ class sensu::package {
     }
 
     'RedHat': {
+      $package_title = 'sensu'
       $package_name = 'sensu'
       $package_source = undef
       $package_require = undef
@@ -41,7 +43,8 @@ class sensu::package {
       $repo_require = undef
 
       $package_version = inline_template("<%= scope.lookupvar('sensu::version').sub(/(.*)\./, '\1-') %>")
-      $package_name = 'sensu'
+      $package_title = 'sensu'
+      $package_name = 'Sensu'
       $package_source = "C:\\Windows\\Temp\\sensu-${package_version}.msi"
       $package_require = "Archive[${package_source}]"
 
@@ -58,10 +61,11 @@ class sensu::package {
 
   }
 
-  package { $package_name:
-    ensure   => $sensu::version,
-    source   => $package_source,
-    require  => $package_require,
+  package { $package_title:
+    ensure  => $sensu::version,
+    name    => $package_name,
+    source  => $package_source,
+    require => $package_require,
   }
 
   if $::sensu::sensu_plugin_provider {
