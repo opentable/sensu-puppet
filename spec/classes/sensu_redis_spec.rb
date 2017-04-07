@@ -40,7 +40,7 @@ describe 'sensu' do
           :owner  => 'sensu',
           :group  => 'sensu',
           :mode   => '0440'
-        ).that_comes_before("Sensu_redis_config[#{facts[:fqdn]}]")
+        )
       end
     end # with server
 
@@ -52,7 +52,7 @@ describe 'sensu' do
           :owner  => 'sensu',
           :group  => 'sensu',
           :mode   => '0440'
-        ).that_comes_before("Sensu_redis_config[#{facts[:fqdn]}]")
+        )
       end
     end # with api
 

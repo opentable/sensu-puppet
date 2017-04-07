@@ -64,7 +64,7 @@ describe 'sensu' do
     context 'repos' do
 
       context 'ubuntu' do
-        let(:facts) { { :osfamily => 'Debian', :lsbdistid => 'ubuntu', :lsbdistrelease => '14.04'} }
+        let(:facts) { { :osfamily => 'Debian', :lsbdistid => 'ubuntu', :lsbdistrelease => '14.04', :lsbdistcodename => 'trusty'} }
 
         context 'with puppet-apt installed' do
           let(:pre_condition) { [ 'define apt::source ($ensure, $location, $release, $repos, $include, $key) {}' ] }
@@ -73,7 +73,7 @@ describe 'sensu' do
             it { should contain_apt__source('sensu').with(
               :ensure      => 'present',
               :location    => 'http://repositories.sensuapp.org/apt',
-              :release     => 'sensu',
+              :release     => 'trusty',
               :repos       => 'main',
               :include     => { 'src' => false },
               :key         => { 'id' => 'EE15CFF6AB6E4E290FDAB681A20F259AEB9C94BB', 'source' => 'http://repositories.sensuapp.org/apt/pubkey.gpg' },
