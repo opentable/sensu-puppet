@@ -14,6 +14,8 @@ class sensu::client::config {
     $ensure = 'present'
   }
 
+  class { '::sensu::client::spawn': }
+
   file { "${sensu::conf_dir}/client.json":
     ensure => $ensure,
     owner  => $sensu::user,
