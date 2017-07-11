@@ -217,6 +217,10 @@
 #   Hash.  Client keepalive config
 #   Default: {}
 #
+# [*client_spawn_limit]
+#   Integer. Check processes spawn limit. The Sensu default is 12 processes
+#   Default: undef
+#
 # [*safe_mode*]
 #   Boolean.  Force safe mode for checks
 #   Default: false
@@ -366,6 +370,7 @@ class sensu (
   $client_name                    = $::fqdn,
   $client_custom                  = {},
   $client_keepalive               = {},
+  $client_spawn_limit             = undef,
   $safe_mode                      = false,
   $plugins                        = [],
   $plugins_dir                    = undef,
