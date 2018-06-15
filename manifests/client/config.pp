@@ -32,6 +32,10 @@ class sensu::client::config {
                         bind => $sensu::client_bind,
                         port => $sensu::client_port,
                       },
+    http_socket   => {
+                        bind => $sensu::client_bind,
+                        port => $sensu::http_port,
+                      },
     subscriptions => $sensu::subscriptions,
     safe_mode     => $sensu::safe_mode,
     custom        => $sensu::client_custom,
