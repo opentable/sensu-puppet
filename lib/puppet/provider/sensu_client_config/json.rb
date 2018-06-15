@@ -41,7 +41,7 @@ Puppet::Type.type(:sensu_client_config).provide(:json) do
   end
 
   def check_args
-    ['name', 'address', 'subscriptions', 'safe_mode', 'socket', 'keepalive', 'redact']
+    ['name', 'address', 'subscriptions', 'safe_mode', 'socket', 'http_socket', 'keepalive', 'redact']
   end
 
   def client_name
@@ -66,6 +66,14 @@ Puppet::Type.type(:sensu_client_config).provide(:json) do
 
   def socket=(value)
     conf['client']['socket'] = value
+  end
+
+  def http_socket
+    conf['client']['http_socket']
+  end
+
+  def http_socket=(value)
+    conf['client']['http_socket'] = value
   end
 
   def subscriptions

@@ -366,6 +366,7 @@ class sensu (
   $subscriptions                  = [],
   $client_bind                    = '127.0.0.1',
   $client_port                    = '3030',
+  $http_port                      = '3031',
   $client_address                 = $::ipaddress,
   $client_name                    = $::fqdn,
   $client_custom                  = {},
