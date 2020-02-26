@@ -399,6 +399,9 @@ class sensu (
   $enterprise_dashboard_ldap      = undef,
   $path                           = undef,
   $redact                         = [],
+  $windows_logrotate              = true,
+  $windows_log_number             = '10',
+  $windows_log_size               = '2048',
 
   ### START Hiera Lookups ###
   $extensions                  = {},
